@@ -26,7 +26,7 @@ const Container = (props) => {
             {props.doll.name}
             {specsExpanded && (
               <pre onClick={toggleSpecs}>
-                {`${props.doll.class}(${props.doll.type})`}
+                {`${props.doll.dclass}(${props.doll.type})`}
               </pre>
             )}
           </div>
