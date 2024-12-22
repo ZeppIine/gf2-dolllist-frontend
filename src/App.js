@@ -9,7 +9,7 @@ const App = () => {
 
   const getDoll = async () => {
     try {
-      const apiUri = process.env.DOLLS_URL;
+      const apiUri = process.env.REACT_APP_DOLLS_URL;
 
       const res = await axios.get(apiUri);
 
