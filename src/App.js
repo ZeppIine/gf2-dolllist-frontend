@@ -7,7 +7,7 @@ import Container from "./Container.js";
 const App = () => {
   const [dolls, setDolls] = useState([]);
 
-  const getSong = async () => {
+  const getDoll = async () => {
     try {
       const apiUri = process.env.DOLLS_URL;
 
@@ -24,7 +24,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    getSong();
+    getDoll();
   }, []);
 
   return (
@@ -49,12 +49,12 @@ const Header = () => {
   );
 };
 
-const DollList = (props) => {
+const DollList = (title, listDolls) => {
   return (
     <div className="doll-list">
-      <h1 className="doll-list-title">{props.title}</h1>
+      <h1 className="doll-list-title">{title}</h1>
       <div className="doll-container">
-        {props.listDolls.map((doll) => (
+        {listDolls.map((doll) => (
           <Container key={doll.id} doll={doll} />
         ))}
       </div>

@@ -13,26 +13,26 @@ const Container = (props) => {
       <div className="container">
         <img
           className="doll-img"
-          src={props.doll.img}
-          alt={`${props.doll.name} 이미지`}
+          src={`https://i.namu.wiki/i/${props.dolls.img}.webp`}
+          alt={`${props.dolls.name} 이미지`}
           onClick={toggleSpecs}
         />
         <a
-          href={`https://www.youtube.com/results?search_query=소녀전선2%20${props.doll.name}`}
+          href={`https://www.youtube.com/results?search_query=소녀전선2%20${props.dolls.name}`}
           target="_blank"
           rel="noreferrer"
         >
           <div className="doll-name">
-            {props.doll.name}
+            {props.dolls.name}
             {specsExpanded && (
               <pre onClick={toggleSpecs}>
-                {`${props.doll.dclass}(${props.doll.type})`}
+                {`${props.dolls.dclass}(${props.dolls.type})`}
               </pre>
             )}
           </div>
         </a>
         <div className="doll-star">
-          {[...Array(props.doll.star)].map((_, index) => (
+          {[...Array(props.dolls.star)].map((_, index) => (
             <FaStar key={index} />
           ))}
         </div>
