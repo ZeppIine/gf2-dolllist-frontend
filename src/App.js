@@ -49,12 +49,12 @@ const Header = () => {
   );
 };
 
-const DollList = (title, listDolls) => {
+const DollList = (props) => {
   return (
     <div className="doll-list">
-      <h1 className="doll-list-title">{title}</h1>
+      <h1 className="doll-list-title">{props.title}</h1>
       <div className="doll-container">
-        {listDolls.map((doll) => (
+        {props.listDolls.map((doll) => (
           <Container key={doll.id} doll={doll} />
         ))}
       </div>
