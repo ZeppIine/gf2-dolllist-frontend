@@ -3,14 +3,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Container from "./Container.js";
 // import dolls from "./data.js";
-import { DOLLS_URL } from "./api";
 
 const App = () => {
   const [dolls, setDolls] = useState([]);
 
   const getSong = async () => {
     try {
-      const res = await axios.get(DOLLS_URL);
+      const apiUri = process.env.DOLLS_URL;
+
+      const res = await axios.get(apiUri);
 
       console.log(res);
 
