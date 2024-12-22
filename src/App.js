@@ -1,37 +1,41 @@
-import { useState, useEffect } from "react";
 import "./App.css";
+import Container from "./Container.js";
+import dolls from "./data.js";
 
-function App() {
-  const [message, setMessage] = useState("서버 접속 중...");
-
-  const fetchData = async () => {
-    try {
-      const apiUrl = process.env.REACT_APP_API_URL;
-
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = await response.json();
-
-      setMessage(data.status);
-    } catch (error) {
-      console.error("Error fetching data: ", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+const App = () => {
   return (
-    <div className="App">
-      <h1>Backend로부터 받은 메시지</h1>
-      <p>{message}</p>
+    <div>
+      <Header />
+      <DollList title="인형 목록" listDolls={dolls} />
     </div>
   );
-}
+};
+
+const Header = () => {
+  return (
+    <div className="header">
+      <img
+        className="logo-img"
+        src={
+          "https://i.namu.wiki/i/922N1EzfpBcCcMiuLvN1VXPcpl5WVdwPXrHTJJbwwMxssn4udDdryUawbuf__kWZtfq6WTjWDmCUG5nUkdxEMdMZsErdohyngpTbKwDs12X1UUlBxExwV8LlClDInPxu1M7_sSiPEjsWEm6Twnn7vQ.webp"
+        }
+        alt={"소녀전선2 : 망명"}
+      />
+    </div>
+  );
+};
+
+const DollList = (props) => {
+  return (
+    <div className="doll-list">
+      <h1 className="doll-list-title">{props.title}</h1>
+      <div className="doll-container">
+        {props.listDolls.map((doll) => (
+          <Container key={doll.id} doll={doll} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default App;
