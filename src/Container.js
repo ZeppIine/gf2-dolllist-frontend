@@ -7,6 +7,7 @@ const Container = (props) => {
   const toggleSpecs = () => {
     setSpecsExpanded((prevState) => !prevState);
   };
+  console.log(props);
 
   return (
     <>
